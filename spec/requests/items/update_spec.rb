@@ -11,9 +11,9 @@ RSpec.describe 'Item update', type: :request do
     }
   end
 
-  before {patch '/api/v1/merchants', params: params}
+  before {patch "/api/v1/items/#{item.id}", params: params}
 
-  it 'can update a current merchant' do
+  it 'can update a current item' do
     expect(JSON.parse(response.body)['data']['id'].to_i).to eq(item.id)
     expect(JSON.parse(response.body)['data']['attributes']['name']).to eq('Pickle')
     expect(JSON.parse(response.body)['data']['attributes']['description']).to eq('pickled cucumber')
@@ -21,6 +21,6 @@ RSpec.describe 'Item update', type: :request do
   end
 
   it 'returns status code 200' do
-    expect(response).to have_http_status(:ok)
+    expect(response).to have_http_status(:success)
   end
 end
