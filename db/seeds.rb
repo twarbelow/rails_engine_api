@@ -14,13 +14,13 @@ CSV.foreach(Rails.root.join('db/data/customers.csv'), headers: true) do |row|
 end
 
 CSV.foreach(Rails.root.join('db/data/merchants.csv'), headers: true) do |row|
-  Customer.create({
+  Merchant.create({
     name: row["name"],
     })
 end
 
 CSV.foreach(Rails.root.join('db/data/invoices.csv'), headers: true) do |row|
-  Customer.create({
+  Invoice.create({
     customer_id: row["customer_id"],
     merchant_id: row["merchant_id"],
     status: row["status"],
@@ -28,16 +28,16 @@ CSV.foreach(Rails.root.join('db/data/invoices.csv'), headers: true) do |row|
 end
 
 CSV.foreach(Rails.root.join('db/data/items.csv'), headers: true) do |row|
-  Customer.create({
+  Item.create({
     name: row["name"],
     description: row["description"],
     unit_price: row["unit_price"].to_f/100.0,
-    mechant_id: row["merchant_id"],
+    merchant_id: row["merchant_id"],
     })
 end
 
 CSV.foreach(Rails.root.join('db/data/invoice_items.csv'), headers: true) do |row|
-  Customer.create({
+  InvoiceItem.create({
     item_id: row["item_id"],
     invoice_id: row["invoice_id"],
     quantity: row["quantity"],
