@@ -4,11 +4,14 @@ RSpec.describe 'Items create', type: :request do
   let!(:item) {FactoryBot.create(:item)}
   let!(:params) do
     {
-      item: {
-        name: item.name,
-        description: item.description,
-        unit_price: item.unit_price,
-        merchant_id: item.merchant_id
+      data: {
+        type: 'item',
+        attributes: {
+          name: item.name,
+          description: item.description,
+          unit_price: item.unit_price,
+          merchant_id: item.merchant_id
+        }
       }
     }
   end
