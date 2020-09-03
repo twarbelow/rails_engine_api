@@ -4,12 +4,7 @@ RSpec.describe 'Merchants create', type: :request do
   let!(:merchant) {FactoryBot.create(:merchant)}
   let!(:params) do
     {
-      data: {
-        type: 'merchant',
-        attributes: {
-          name: merchant.name,
-        }
-      }
+      name: merchant.name,
     }
   end
 
