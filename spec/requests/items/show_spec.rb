@@ -9,6 +9,9 @@ RSpec.describe 'Item show', type: :request do
     expect(JSON.parse(response.body)['data']['id'].to_i).to eq(item.id)
     expect(JSON.parse(response.body)['data']['type']).to eq("item")
     expect(JSON.parse(response.body)['data']['attributes']['name']).to eq(item.name)
+    expect(JSON.parse(response.body)['data']['attributes']['description']).to eq(item.description)
+    expect(JSON.parse(response.body)['data']['attributes']['merchant_id']).to eq(item.merchant_id)
+
   end
 
   it 'returns status code 200' do
