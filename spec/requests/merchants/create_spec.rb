@@ -13,10 +13,10 @@ RSpec.describe 'Merchants create', type: :request do
     }
   end
 
-  before {post '/api/v1/merchant', params: params}
+  before {post '/api/v1/merchants', params: params}
 
   it 'can create a new merchant' do
-    expect { post "/api/v1/merchant", params: params }.to change(Merchant, :count).by(+1)
+    expect { post "/api/v1/merchants", params: params }.to change(Merchant, :count).by(+1)
   end
 
   it 'returns status code 201' do
