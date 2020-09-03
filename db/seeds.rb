@@ -6,56 +6,41 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
-CSV.foreach(Rails.root.join('/data/customers.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('db/data/customers.csv'), headers: true) do |row|
   Customer.create({
-    id: row["id"],
     first_name: row["first_name"],
     last_name: row["last_name"],
-    created_at: row["created_at"],
-    updated_at: row["updated_at"]
   })
 end
 
-CSV.foreach(Rails.root.join('/data/invoice_items.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('db/data/merchants.csv'), headers: true) do |row|
   Customer.create({
-    id: row["id"],
-    item_id: row["item_id"],
-    invoice_id: row["invoice_id"],
-    quantity: row["quantity"],
-    unit_price: row["unit_price"],
-    created_at: row["created_at"],
-    updated_at: row["updated_at"]
-  })
+    name: row["name"],
+    })
 end
 
-CSV.foreach(Rails.root.join('/data/invoices.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('db/data/invoices.csv'), headers: true) do |row|
   Customer.create({
-    id: row["id"],
     customer_id: row["customer_id"],
     merchant_id: row["merchant_id"],
     status: row["status"],
-    created_at: row["created_at"],
-    updated_at: row["updated_at"]
-  })
+    })
 end
 
-CSV.foreach(Rails.root.join('/data/items.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('db/data/items.csv'), headers: true) do |row|
   Customer.create({
-    id: row["id"],
     name: row["name"],
     description: row["description"],
-    unit_price: row["unit_price"],
+    unit_price: row["unit_price"].to_f/100.0,
     mechant_id: row["merchant_id"],
-    created_at: row["created_at"],
-    updated_at: row["updated_at"]
-  })
+    })
 end
 
-CSV.foreach(Rails.root.join('/data/merchants.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('db/data/invoice_items.csv'), headers: true) do |row|
   Customer.create({
-    id: row["id"],
-    name: row["name"],
-    created_at: row["created_at"],
-    updated_at: row["updated_at"]
+    item_id: row["item_id"],
+    invoice_id: row["invoice_id"],
+    quantity: row["quantity"],
+    unit_price: row["unit_price"].to_f/100.0,
   })
 end
