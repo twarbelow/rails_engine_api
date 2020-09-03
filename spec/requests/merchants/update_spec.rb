@@ -11,7 +11,7 @@ RSpec.describe 'Merchant update', type: :request do
   before {patch "/api/v1/merchants/#{merchant.id}", params: params}
 
   it 'can update a current merchant' do
-    expect(JSON.parse(response.body)['data']['id'].to_i).to eq(item.id)
+    expect(JSON.parse(response.body)['data']['id'].to_i).to eq(merchant.id)
     expect(JSON.parse(response.body)['data']['attributes']['name']).to eq('PickleMan')
   end
 
