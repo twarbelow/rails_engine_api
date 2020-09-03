@@ -5,7 +5,7 @@ RSpec.describe 'Item show', type: :request do
 
   before {get "/api/v1/items/#{item.id}"}
 
-  it 'can get all the items' do
+  it 'can get individual item information' do
     expect(JSON.parse(response.body)['data']['id'].to_i).to eq(item.id)
     expect(JSON.parse(response.body)['data']['type']).to eq("item")
     expect(JSON.parse(response.body)['data']['attributes']['name']).to eq(item.name)
