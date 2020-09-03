@@ -13,6 +13,6 @@ class Api::V1::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require('data').require('attributes').permit(:name, :description, :unit_price, :merchant_id)
+    params.permit(:name, :description, :unit_price, :merchant_id)
   end
 end

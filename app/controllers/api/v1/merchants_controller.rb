@@ -13,6 +13,6 @@ class Api::V1::MerchantsController < ApplicationController
 
   private
   def merchant_params
-    params.require('data').require('attributes').permit(:name)
+    params.permit(:name)
   end
 end
