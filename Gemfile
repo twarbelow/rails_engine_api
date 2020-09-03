@@ -35,6 +35,7 @@ end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rspec-rails'
 end
 
 group :test do
@@ -43,6 +44,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
   gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 
